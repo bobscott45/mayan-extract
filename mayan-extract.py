@@ -20,8 +20,10 @@ def copyFiles(cabinetId, path):
     rows = cur.fetchall()
     for row in rows:
         os.makedirs(output_path + "/" + path, exist_ok=True)
-        source = mayan_document_path + "/" + row[0]
-        dest = output_path  + path +"/" + row[1]
+        file = row[0]
+        label = row[1]
+        source = mayan_document_path + "/" + file
+        dest = output_path  + path +"/" + label
         try:
             shutil.copy(source, dest)
             copied += 1
