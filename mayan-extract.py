@@ -5,6 +5,7 @@ import psycopg2
 
 mayan_document_path = "/home/robert/Data/containers/mayan-edms/media/document_storage"
 output_path = "/home/robert/Data/dms-extract"
+db_connection = "host='localhost' dbname='mayan' user='mayan' password='mayanuserpass'"
 
 copied = 0
 errors = 0
@@ -51,7 +52,7 @@ def extractFiles(parent, path):
         extractFiles(cabinetId, path + "/" + cabinetName)
 
 try:
-    conn = psycopg2.connect("host='localhost' dbname='mayan' user='mayan' password='mayanuserpass'")
+    conn = psycopg2.connect(db_connection)
 except:
     print("Connection error")
 
